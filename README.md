@@ -24,8 +24,8 @@ As I update the project, I'll note down which milestones have been hit.
 ### Foundational Steps
 * ~~Open and read literally any file.  I haven't done this in Python yet.  Do
 something on the basis of the contents of that file.~~ DONE
-* Write a new file.  Make a program that has any kind of output other than
-to the screen.
+* ~~Write a new file.  Make a program that has any kind of output other than
+to the screen.~~ DONE
 * Investigate opening / reading / writing OpenDocument format files, namely
 .odt and .ods files.  Determine if there is an option to ignore text formatting
 when reading from .odt.  Run some test cases.  Write some .ods files.
