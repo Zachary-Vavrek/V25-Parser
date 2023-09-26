@@ -22,8 +22,8 @@ goal is to make a World of Darkness equivalent to
 As I update the project, I'll note down which milestones have been hit.
 
 ### Foundational Steps
-* Open and read literally any file.  I haven't done this in Python yet.  Do
-something on the basis of the contents of that file.
+* ~~Open and read literally any file.  I haven't done this in Python yet.  Do
+something on the basis of the contents of that file.~~ DONE
 * Write a new file.  Make a program that has any kind of output other than
 to the screen.
 * Investigate opening / reading / writing OpenDocument format files, namely
