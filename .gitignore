@@ -9,5 +9,8 @@ venv.bak/
 
 # Taken from GitHub's compilation of gitignore templates.  I'm not including more until I understand this better.
 
+# Why is gitignore getting uploaded?  That's dumb.
+.gitignore
+
 # Lock files, such as for a .odt file.
 .~lock.*
