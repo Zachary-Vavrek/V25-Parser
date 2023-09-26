@@ -1,0 +1,10 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Taken from GitHub's compilation of gitignore templates.  I'm not including more until I understand this better.
