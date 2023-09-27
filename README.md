@@ -26,13 +26,16 @@ As I update the project, I'll note down which milestones have been hit.
 something on the basis of the contents of that file.~~ DONE
 * ~~Write a new file.  Make a program that has any kind of output other than
 to the screen.~~ DONE
-* Investigate opening / reading / writing OpenDocument format files, namely
+* ~~Investigate opening / reading / writing OpenDocument format files, namely
 .odt and .ods files.  Determine if there is an option to ignore text formatting
-when reading from .odt.  Run some test cases.  Write some .ods files.
-* For the files in question, find out if the newline characters are \cr\lf or
+when reading from .odt.  Run some test cases.  Write some .ods files.~~ DONE
+* ~~For the files in question, find out if the newline characters are \cr\lf or
 what.  Separately, make a few trial runs to make sure various newline
 options work fine.  This seems like a small detail which might be a headache.
-Become familiar with this small detail.
+Become familiar with this small detail.~~ DONE (There aren't newline
+characters, I think, in these files.  Each line is enclosed in \<text:p\> tags.)
+* NEW: Do basic handling of arguments, specify input file or files, output
+file.  Prompt for overwrite confirmation if output file already exists.
 
 ### Intermediate Goals
 * Read in a single Discipline file and split it to multiple .txt files based
