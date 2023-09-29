@@ -33,9 +33,10 @@ when reading from .odt.  Run some test cases.  Write some .ods files.~~ DONE
 what.  Separately, make a few trial runs to make sure various newline
 options work fine.  This seems like a small detail which might be a headache.
 Become familiar with this small detail.~~ DONE (There aren't newline
-characters, I think, in these files.  Each line is enclosed in \<text:p\> tags.)
-* NEW: Do basic handling of arguments, specify input file or files, output
-file.  Prompt for overwrite confirmation if output file already exists.
+characters, I think, in these files.  Each line is enclosed in `<text:p\>`
+tags.)
+* ~~NEW: Do basic handling of arguments, specify input file or files, output
+file.  Prompt for overwrite confirmation if output file already exists.~~ DONE
 
 ### Intermediate Goals
 * Read in a single Discipline file and split it to multiple .txt files based

@@ -236,13 +236,12 @@ def main():
     # for i in args.input:
     #     print(i)
 
-    # Right now this just stops everything if the output exists.  Goal is to
-    # have it prompt the user for "Overwrite? (y/N)", but it slipped my mind
-    # I focused on handling arguments and directories.  First thing on the to
-    # do list for today (Friday).
+    # This should probably accept more confirmations than just 'y' and 'Y', but
+    # it works quite well otherwise.
     if exists(args.output):
-        print("Output file already present, delete first.")
-        return
+        choice = input("Output file present.  Overwrite? (y/N): ")
+        if not (choice == 'y' or choice == 'Y'):
+            return
 
     compilation = []
 
