@@ -168,22 +168,115 @@
 # Pandas is all about well-structured data.  But I can read stuff in with odfpy
 # and write it out with pandas.  Transformation happens within Python.
 
-import pandas as pd
-from odf import text, teletype
-from odf.opendocument import load
+# import pandas as pd
+# from odf import text, teletype
+# from odf.opendocument import load
+
+# def main():
+#     doc = load("Test doc.odt")
+#     paras = doc.getElementsByType(text.P)
+#     holding = []
+#     for para in paras:
+#         holding.append(teletype.extractText(para))
+#     thing = "\n".join(holding)
+#     split_thing = thing.replace('\n\n\n','\n\n').split('\n\n')
+#     test_df = pd.DataFrame(split_thing)
+#     output_file = "test.ods"
+#     test_df.to_excel(excel_writer = output_file, header=False, index=False)
+#     # Once I realized I already had test.ods open in another window, and needed
+#     # to close and reopen it in LibreOffice Calc, this worked perfectly.
+#     # That took me a good minute or three, though.
+# main()
+
+# Now, for today (Thursday), all that stuff about taking arguments.
+
+# General idea: be able to specify a single input file, or some kind of list of
+# input files, or a directory containing input files, and be able to specify
+# an output file.  (All three input file options should be supported.)  If the
+# output file already exists, prompt for overwrite confirmation.  Maybe prompt
+# confirmation with "this list of files?" if a directory is specified as the
+# input.
+
+# How does any of this work?  Looking at the following tutorial:
+# https://docs.python.org/3/howto/argparse.html
+
+import argparse
+from os.path import exists, isdir, join, isfile
+from os import listdir
 
 def main():
-    doc = load("Test doc.odt")
-    paras = doc.getElementsByType(text.P)
-    holding = []
-    for para in paras:
-        holding.append(teletype.extractText(para))
-    thing = "\n".join(holding)
-    split_thing = thing.replace('\n\n\n','\n\n').split('\n\n')
-    test_df = pd.DataFrame(split_thing)
-    output_file = "test.ods"
-    test_df.to_excel(excel_writer = output_file, header=False, index=False)
-    # Once I realized I already had test.ods open in another window, and needed
-    # to close and reopen it in LibreOffice Calc, this worked perfectly.
-    # That took me a good minute or three, though.
+    # parser is an ArgumentParser object which I use to get user input from
+    # the command line.  Apparently, the standard is to have required
+    # positional arguments (so, `program foo bar` passes foo as the first
+    # argument and bar as the second) and optional arguments with conditional
+    # flags (or ... whatever I should call them, the -i and -o I'm using
+    # below).  The "required optional" argument style employed here is
+    # frowned upon, but I'm unsure how else to have a required argument with
+    # a variable number of inputs.  Also, I want the -i and -o so that I can
+    # put things in whatever order.  Seems convenient.
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-i', '--input',
+        nargs='+',
+        required=True
+    )
+    parser.add_argument(
+        '-o', '--output',
+        required=True
+    )
+
+    print("holding")
+
+    # parse_args() pulls out the arguments given and allows them to be
+    # addressed by name, as done below.
+    args = parser.parse_args()
+    # print(args)
+    # print(len(args.input))
+    # print(len(args.output))
+    # for i in args.input:
+    #     print(i)
+
+    # Right now this just stops everything if the output exists.  Goal is to
+    # have it prompt the user for "Overwrite? (y/N)", but it slipped my mind
+    # I focused on handling arguments and directories.  First thing on the to
+    # do list for today (Friday).
+    if exists(args.output):
+        print("Output file already present, delete first.")
+        return
+
+    compilation = []
+
+    files = []
+    if isdir(args.input[0]):
+        # What's happening here is: if what's passed to --input is a directory,
+        # then a list of all the files in that directory is assembled.  The
+        # ... I don't know what it's called, the [f for f in x] notation, is
+        # handy for this but I need more practice with it.
+        # Notable: the if condition above is only looking at the first value
+        # passed as to --input, and this disregards any subsequent values.
+        # What I'm saying is: this could be written better and take account of
+        # other possibilities.  It's more a proof of concept about "how do I
+        # pass in a directory and get its files out of that?"
+        files = [join(args.input[0], f) for f in listdir(args.input[0])]
+    else:
+        files = args.input
+    print(files)
+    for i in files:
+        with open(i, encoding="utf-8") as f:
+            test = f.read()
+        compilation.append(test)
+    # I'm not a fan of having two entirely different things named "join" in my
+    # code.  join() makes file paths out of paths and filenames, while .join()
+    # concatenates strings.  Unsure what convention to follow here about
+    # possibly renaming one for clarity.
+    string = "\n".join(compilation)
+    with open(args.output, 'w', encoding="utf-8") as f:
+        f.write(string)
+    print("holding")
+
+# Some reading suggests scandir() might be better than listdir().  Scandir
+# tells me about whether stuff is a file, is a directory, already gives full
+# path name (which I think can be used for easy extension matching, right?
+# Slice off the last four characters and see if they match ".odt".)
+
 main()
