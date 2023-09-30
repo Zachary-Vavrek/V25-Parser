@@ -39,9 +39,9 @@ tags.)
 file.  Prompt for overwrite confirmation if output file already exists.~~ DONE
 
 ### Intermediate Goals
-* Read in a single Discipline file and split it to multiple .txt files based
+* ~~Read in a single Discipline file and split it to multiple .txt files based
 on content, as a proof of concept.  For example, Auspex.odt would produce
-Auspex\Rank 1\Heightened Senses.txt (along with all the rest).
+Auspex\Rank 1\Heightened Senses.txt (along with all the rest).~~ DONE
 * Read in a sample Discipline file (perhaps a truncated version of a full file)
 and write each power to a row in a .ods file.  Only as I write this goal does
 the notion of appending rows to the bottom of a spreadsheet come to me, versus
