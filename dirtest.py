@@ -44,3 +44,5 @@ def write_text_files(disc_file, outdir):
 main()
 
 # A sideshow, but one that was helpful to do!
+# idea: split on two newlines then a dot, but then, every time I do something
+# with a split_disc item, make the string-being-worked-on dot+item.

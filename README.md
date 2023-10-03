@@ -42,14 +42,16 @@ file.  Prompt for overwrite confirmation if output file already exists.~~ DONE
 * ~~Read in a single Discipline file and split it to multiple .txt files based
 on content, as a proof of concept.  For example, Auspex.odt would produce
 Auspex\Rank 1\Heightened Senses.txt (along with all the rest).~~ DONE
-* Read in a sample Discipline file (perhaps a truncated version of a full file)
+* ~~Read in a sample Discipline file (perhaps a truncated version of a full file)
 and write each power to a row in a .ods file.  Only as I write this goal does
 the notion of appending rows to the bottom of a spreadsheet come to me, versus
 rewriting the whole thing each time or ... I just hadn't given it much thought
-yet.  (It's all in the 'Investigate' goal up in Foundational Stesp.)
-* Read in multiple Discipline files (either given as a list or simply
+yet.  (It's all in the 'Investigate' goal up in Foundational Steps.)~~ SKIPPED
+* ~~Read in multiple Discipline files (either given as a list or simply
 'everything in this directory'?) and compile information to a single output
-file.
+file.~~ DONE
+* NEW: Clean up the code, add some rudimentary handling of poorly-formatted
+input files (such as a leading space on a new line).
 
 ### Here Be Dragons
 * Some kind of representation of a character, so that the cost of any given

@@ -11,13 +11,10 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            // "args": [
-            //     "-o", "./test files/out.txt", "./test files/out2.txt",
-            //     "-i",
-            //     "./test files/in/in1.txt",
-            //     "./test files/in/in2.txt"
-            //     // "./test files/in/"
-            // ]
+            "args": [
+                "-o", "./test files/out.ods",
+                "-i", "./test files/disc/"
+            ]
         }
     ]
 }
