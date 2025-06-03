@@ -164,7 +164,46 @@ def table_builder(files):
             # disc, ID = txt_parse(file, ID)
             # output_table.append(disc)
             print(".txt parser not implemented yet.")
+        elif file[-3:] == ".md":
+            # stuff happens here
+            print(".md parser not implemented yet, but soon.")
+
+    output_table = prereq_finder(output_table)
 
     return output_table
+
+def prereq_finder(input_table):
+    print("holding")
+    # notes as I look at the table in the variable viewer:
+    # operative range is range(1,len(table))
+    # prereq is col5, ID is col6.  name is col1.  which I knew from above.
+    # so it's like: table[1][6] is the prereq for Aid from Spirits.
+    # step one: make a set of all those prereq names.
+    # step two: iterate *again*, to make a dictionary that maps names
+    # to ID numbers.
+    # step three: use dict to set the prereq ID column.
+
+    # Set to hold the names of prerequisites.
+    prereq_set = set()
+    for i in range(1,len(input_table)):
+        # Iterate through table, finding those names, adding them to set.
+        if input_table[i][5]:
+            prereq_set.add(input_table[i][5])
+        # If no prereq, set prereq ID to 0.
+        else:
+            input_table[i][6] = 0
+    print("holding")
+    prereq_ids = {k:"X" for k in prereq_set}
+    print("holding")
+    for i in range(1,len(input_table)):
+        if input_table[i][1] in prereq_set:
+            # Technically speaking, input_table[i][0] = i, but this is
+            # kind of a coincidence from IDs starting at 1.
+            prereq_ids[input_table[i][1]] = input_table[i][0]
+    for i in range(1,len(input_table)):
+        if input_table[i][5]:
+            input_table[i][6] = prereq_ids[input_table[i][5]]
+    print("holding")
+    return input_table
 
 main()

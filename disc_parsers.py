@@ -57,7 +57,8 @@ def disc_parse(disc, ID):
         power_dict = power_parse(disc[i])
 
         # Prep a list.
-        power = [None] * 21
+        power = [None] * 10 + [0] * 11
+
 
         # Fill the list with known values.
         power[col_num["ID"]] = ID
@@ -124,6 +125,12 @@ def power_parse(power):
         # Move the marker forward.
         desc_line += 1
 
+        # Note that this is an Amalgam power.  This is overwritten by
+        # AND or OR, as appropriate.  I'm not sure what term to use
+        # for an amalgam which requires a single other power.  ONE and
+        # YES come to mind.  ONE is more descriptive, but the leading O
+        # looks too similar to OR for comfort.
+        output["Amalgam"] = "YES"
         # Inward Focus requires three things!  Using a comma as a basic check.
         if "," not in amalgam:
             # Check if it's an 'or' type, split if so.

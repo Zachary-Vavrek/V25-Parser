@@ -6,14 +6,14 @@
     "configurations": [
         {
             "name": "Python: Current File",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "-o", "./test files/out.ods",
-                "-i", "./test files/disc/"
+                "-o", "./test files/out3.ods",
+                "-i", "./test files/disc3/"
             ]
         }
     ]
