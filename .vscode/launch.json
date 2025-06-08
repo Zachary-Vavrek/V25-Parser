@@ -12,8 +12,8 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "-o", "./test files/out3.ods",
-                "-i", "./test files/disc3/"
+                "-o", "./test files/out4.ods",
+                "-i", "./test files/discmd1/"
             ]
         }
     ]

@@ -22,3 +22,29 @@ def txt_parse(file, ID):
         disc = f.read()
     return disc_parse(disc, ID)
 
+# I think md_parse gets a lot of the text processing needed to rearrange
+# the file to look like the raw text of the odt files.  Delete lines that
+# begin with "## ", remove the "# " and "### " character strings.  Replace
+# the "$\quad$" blocks with Tabs?  Remove "**" character strings.
+# That's basically it?
+def md_parse(file, ID):
+    with open(file, encoding="utf-8") as f:
+        disc = f.read()
+    # Markdown parsing here
+
+    # Split up individual lines.
+    disc = disc.split('\n')
+
+    # This should make a list of all the lines that aren't level 2 headers.
+    disc = list(filter(lambda line: not line.startswith('## '), disc))
+
+    # Reassemble all the lines into one string.
+    disc = "\n".join(disc)
+
+    # Swap quads to tabs.
+    disc = disc.replace('$\\quad$','\t')
+
+    # Remove level 1 and 3 headers, boldings.
+    disc = disc.replace('**','').replace('### ','').replace('# ','')
+
+    return disc_parse(disc, ID)

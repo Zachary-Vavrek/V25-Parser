@@ -26,7 +26,7 @@ import argparse
 import pandas as pd
 from os import listdir
 from os.path import isdir, exists, join, isfile
-from file_parsers import odt_parse
+from file_parsers import md_parse, odt_parse
 
 
 def main():
@@ -165,8 +165,8 @@ def table_builder(files):
             # output_table.append(disc)
             print(".txt parser not implemented yet.")
         elif file[-3:] == ".md":
-            # stuff happens here
-            print(".md parser not implemented yet, but soon.")
+            disc, ID = md_parse(file, ID)
+            output_table.extend(disc)
 
     output_table = prereq_finder(output_table)
 

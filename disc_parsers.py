@@ -11,7 +11,7 @@ def disc_parse(disc, ID):
     # This splits disc into a list of strings, each one being a discipline
     # power (a blank line followed by a dot).  It also removes one dot from
     # every first line, which is inconvenient.
-    disc = disc.split('\n\n•')
+    disc = disc.split('\n•')
 
     # This removes any empty strings from the list.
     disc = list(filter(None, disc))
